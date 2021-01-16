@@ -9,7 +9,7 @@ const connect = () => {
     const connection = mongoose.connection
     //caso der um erro 
     connection.on('error', ()=> console.error("Erro ao conectar com o MongoDB"))
-    connection.once('open', ()=> console.log("Estamos conectados!"))
+    connection.once('open', ()=> console.log("Estamos conectados ...!"))
 }
 
 module.exports = {connect}
