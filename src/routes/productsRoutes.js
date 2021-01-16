@@ -5,13 +5,15 @@ const controller = require('../controllers/productsController')
 //@Description: Get 
 router.get('/', controller.allProducts)
 
-//Por id
+//@Description: Get Por id
 router.get('/:id', controller.ProductById)
 
-//busca por nodemon
-router.get('/:nome', controller.getProductPorNome)
+//@Description: Get por descricao do Produto
+router.get('/prod/:descricao', controller.getProductPorNome)
+//@Description: Get por Categoria do Produto
+router.get('/categoria/:categoria', controller.getProductPorCategoria)
 
-//@Description: Post - Criar novos product
+//@Description: Post - Criar novo Produto
 router.post('/registrar', controller.addProduct)
 
 //@Description: PUT - Atualizar produto por ID

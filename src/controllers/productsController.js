@@ -1,6 +1,4 @@
 const productsCollection = require('../models/productSchema');
-//const {model} = require('mongoose')
-
 
 //Obtendo todos o produtos registrados 
 const allProducts = (req, res) => {
@@ -14,13 +12,11 @@ const allProducts = (req, res) => {
         }
     })
 }
-
 //Registrar um Produto
 const addProduct = (req, res) => {
     console.log(req.url);
     const productsBody = req.body;
     const product = new productsCollection(productsBody);
-
     product.save((error) => {
         console.log(product);
         if (error) {
@@ -33,13 +29,11 @@ const addProduct = (req, res) => {
         }
     })
 }
-
 //Atualizar Produto
 const updateProducts = (req, res) => {
     const id = req.params.id
     const productBody = req.body
     const novo = {new: true} //retorna valor modificado
-
     productsCollection.findByIdAndUpdate(
         id,
         {$set: productBody}, //com os colchetes não funciona
@@ -59,14 +53,13 @@ const updateProducts = (req, res) => {
 
     )
 }
-
 //Excluir produto
 const delProduct = (req, res) => {
     const id = req.params.id
     productsCollection.findByIdAndDelete(id,(error, product) =>{
         if (error) {
             return res.status(500).send({
-                message: 'Ocorreu um error, verificar!',
+                message: 'Ocorreu um erro, verificar!',
                 error
             })
         }else{
@@ -78,7 +71,6 @@ const delProduct = (req, res) => {
         }
     })
 }
-
 //Busca por ID
 const ProductById = (req, res) => {
     const id = req.params.id
@@ -94,29 +86,27 @@ const ProductById = (req, res) => {
         }
     })
 }
-
-//Filtrar por descricao do Produto 
+//Busca por descricao do Produto 
 const getProductPorNome = (req, res) => {
-    const descricao = req.params.descricao
-    productsCollection.filter({product: descricao},(error, product) => {
+    const nome = req.params.descricao
+    productsCollection.find({descricao: nome},(error, descricao) => {
         if (error) {
-            return res.status(500).send(error);
+            return res.status(500).send(error);            
         }else if(descricao == ''){
             return res.status(404).send('Produto não encontrado!')
         }else{
             return res.status(200).send({
                 message: 'Produto encontrado!',
-                product
+                descricao
             })
         }
     })
     
 }
-
-//Filtrar por categoria
+//Busca por categoria do produto
 const getProductPorCategoria = (req, res) => {
-    const categoria = req.params.categoria
-    productsCollection.filter({product: categoria},(error, product) => {
+    const catParam = req.params.categoria
+    productsCollection.find({categoria: catParam},(error, categoria) => {
         if (error) {
             return res.status(500).send(error);
         }else if(categoria == ''){
@@ -124,17 +114,12 @@ const getProductPorCategoria = (req, res) => {
         }else{
             return res.status(200).send({
                 message: 'Categoria encontrada!',
-                product
+                categoria
             })
         }
-    })
+    }).sort({categoria:1})
     
 }
-
-
-
-
-
 module.exports = {
     addProduct,
     allProducts,
