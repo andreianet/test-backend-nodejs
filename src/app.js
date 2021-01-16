@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-
 const database = require('./models/repository');
 database.connect();
 
@@ -14,6 +13,5 @@ const product = require('./routes/productsRoutes');
 
 app.use("/", index);
 app.use("/product", product);
-
 
 module.exports = app;
