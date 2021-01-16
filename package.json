@@ -1,0 +1,25 @@
+{
+  "name": "test-backend-nodejs",
+  "version": "1.0.0",
+  "description": "API Products",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreianet/test-backend-nodejs.git"
+  },
+  "author": "Andreia Rosa Cardoso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreianet/test-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/andreianet/test-backend-nodejs#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.12"
+  }
+}
