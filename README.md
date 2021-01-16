@@ -36,7 +36,7 @@ O projeto foi desenvolvido na Arquitetura MVC, podendo ter uma melhor estrutura 
 - Mongoose
 - mongodb
 - Postman
-- VSCode
+- VSCode 
  
 <strong>Métodos HTTP Utilizados e Endpoints</strong>
 |Métodos            |Caminhos                                      |  Descrição                       |
